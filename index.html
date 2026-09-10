@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🕉️ పోకురుపల్లి వినాయక చవితి 2026</title>
+  <meta name="description" content="పోకురుపల్లి వినాయక చవితి 2026 - కార్యక్రమాలు, దాతల వివరాలు మరియు ఫోటో గ్యాలరీ">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <div class="om">ॐ</div>
+    <h1>పోకురుపల్లి వినాయక చవితి 2026</h1>
+    <p>వినాయక చవితి ఉత్సవాలు • భక్తి • సేవ • సంస్కృతి</p>
+    <nav>
+      <a href="#today">నేటి కార్యక్రమాలు</a>
+      <a href="#donors">దాతలు</a>
+      <a href="#gallery">ఫోటోలు</a>
+      <a href="#upload">ఫోటో అప్లోడ్</a>
+      <a href="admin.html">అడ్మిన్</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section id="today" class="section">
+    <div class="section-title"><h2>📅 నేటి కార్యక్రమాలు</h2></div>
+    <div id="todayEvents" class="cards"><p class="muted">లోడ్ అవుతోంది...</p></div>
+  </section>
+
+  <section id="donors" class="section">
+    <div class="section-title"><h2>🙏 దాతల జాబితా</h2></div>
+    <div id="donorsList" class="donor-list"><p class="muted">లోడ్ అవుతోంది...</p></div>
+  </section>
+
+  <section id="gallery" class="section">
+    <div class="section-title"><h2>📸 ఫోటో గ్యాలరీ</h2></div>
+    <div id="galleryGrid" class="gallery"><p class="muted">లోడ్ అవుతోంది...</p></div>
+  </section>
+
+  <section id="upload" class="section upload-box">
+    <h2>📷 మీ ఫోటోను పంచుకోండి</h2>
+    <p>మీరు తీసిన ఉత్సవ ఫోటోను అప్లోడ్ చేయండి. అడ్మిన్ ఆమోదించిన తర్వాత గ్యాలరీలో కనిపిస్తుంది.</p>
+    <form id="uploadForm">
+      <input id="photoName" type="text" placeholder="మీ పేరు (ఐచ్ఛికం)" maxlength="80">
+      <input id="photoTitle" type="text" placeholder="ఫోటో పేరు (ఐచ్ఛికం)" maxlength="120">
+      <input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" required>
+      <button type="submit">ఫోటో అప్లోడ్ చేయండి</button>
+      <p id="uploadMsg" class="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer><p>🕉️ పోకురుపల్లి వినాయక చవితి 2026</p></footer>
+<script src="app.js"></script>
+</body>
+</html>
