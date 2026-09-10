@@ -1,52 +1,18 @@
 <!DOCTYPE html>
-<html lang="te">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>అడ్మిన్ — పోకురుపల్లి వినాయక చవితి 2026</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
-<body>
-<header class="admin-header"><div class="container"><h1>🔐 అడ్మిన్ ప్యానెల్</h1><a href="index.html">← వెబ్‌సైట్‌కి తిరిగి</a></div></header>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Dashboard — Pokurupalli Vinayaka Chaviti 2026</title><link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head>
+<body><header class="admin-header"><div class="container admin-top"><div><p class="eyebrow">POKURUPALLI VINAYAKA CHAVITI 2026</p><h1>Admin Dashboard</h1></div><a href="index.html">← View Website</a></div></header>
 <main class="container admin-main">
-<section id="loginPanel" class="panel">
-<h2>అడ్మిన్ లాగిన్</h2>
-<form id="loginForm"><input id="email" type="email" placeholder="Email" required><input id="password" type="password" placeholder="Password" required><button>లాగిన్</button><p id="loginMsg" class="status"></p></form>
-</section>
-
+<section id="loginPanel" class="panel login"><h2>Admin Login</h2><p class="muted">Sign in to manage the festival website.</p><form id="loginForm"><input id="email" type="email" placeholder="Email" required><input id="password" type="password" placeholder="Password" required><button>Sign In</button><p id="loginMsg" class="status"></p></form></section>
 <section id="dashboard" hidden>
-<div class="admin-top"><h2>డ్యాష్‌బోర్డ్</h2><button id="logoutBtn" class="secondary">లాగ్ అవుట్</button></div>
-
+<div class="admin-top"><div><p class="eyebrow">OVERVIEW</p><h2>Dashboard</h2></div><button id="logoutBtn" class="secondary">Sign Out</button></div>
+<section class="stats admin-stats"><div class="stat"><span>💰</span><small>Total Donations</small><strong id="dashDonations">₹0</strong></div><div class="stat"><span>🙏</span><small>Total Donors</small><strong id="dashDonors">0</strong></div><div class="stat"><span>📅</span><small>Today's Events</small><strong id="dashEvents">0</strong></div><div class="stat"><span>📸</span><small>Pending Photos</small><strong id="dashPending">0</strong></div></section>
 <div class="grid2">
-<div class="panel"><h3>📅 కార్యక్రమం జోడించండి</h3>
-<form id="eventForm">
-<input id="eventTitle" placeholder="కార్యక్రమం పేరు" required>
-<textarea id="eventDesc" placeholder="వివరణ"></textarea>
-<input id="eventDate" type="date" required>
-<div class="row"><input id="startTime" type="time"><input id="endTime" type="time"></div>
-<input id="eventLocation" placeholder="స్థలం">
-<button>కార్యక్రమం సేవ్ చేయండి</button>
-</form></div>
-
-<div class="panel"><h3>🙏 దాతను జోడించండి</h3>
-<form id="donorForm">
-<input id="donorName" placeholder="దాత పేరు" required>
-<input id="donorAmount" type="number" min="0" step="0.01" placeholder="విరాళం మొత్తం (ఐచ్ఛికం)">
-<label class="check"><input id="donorAnonymous" type="checkbox"> పేరు అనామకంగా చూపించండి</label>
-<button>దాతను సేవ్ చేయండి</button>
-</form></div>
+<div class="panel"><h3>📅 Add Event</h3><form id="eventForm"><input id="eventTitle" placeholder="Event name" required><textarea id="eventDesc" placeholder="Description"></textarea><input id="eventDate" type="date" required><div class="row"><input id="startTime" type="time"><input id="endTime" type="time"></div><input id="eventLocation" placeholder="Location"><button>Save Event</button></form></div>
+<div class="panel"><h3>🙏 Add Donor</h3><form id="donorForm"><input id="donorName" placeholder="Donor name" required><input id="donorAmount" type="number" min="0" step="0.01" placeholder="Donation amount"><label class="check"><input id="donorAnonymous" type="checkbox"> Display as Anonymous</label><button>Save Donor</button></form></div>
 </div>
-
-<div class="panel"><h3>📢 ప్రకటన</h3>
-<form id="announcementForm"><input id="annTitle" placeholder="శీర్షిక" required><textarea id="annMessage" placeholder="ప్రకటన"></textarea><button>ప్రకటన సేవ్ చేయండి</button></form>
-</div>
-
-<div class="panel"><h3>📸 పెండింగ్ ఫోటోలు</h3><div id="pendingPhotos" class="pending"></div></div>
-<div class="panel"><h3>📋 ఇటీవలి కార్యక్రమాలు</h3><div id="adminEvents"></div></div>
-<div class="panel"><h3>🙏 దాతలు</h3><div id="adminDonors"></div></div>
-</section>
-</main>
-<script src="admin.js"></script>
-</body>
-</html>
+<div class="panel"><h3>📢 Add Announcement</h3><form id="announcementForm"><input id="annTitle" placeholder="Title" required><textarea id="annMessage" placeholder="Announcement message"></textarea><button>Save Announcement</button></form></div>
+<div class="panel"><h3>📸 Pending Photo Approvals</h3><div id="pendingPhotos"></div></div>
+<div class="panel"><h3>📅 Recent Events</h3><div id="adminEvents"></div></div>
+<div class="panel"><h3>🙏 Donors</h3><div id="adminDonors"></div></div>
+</section></main><script src="admin.js"></script></body></html>
