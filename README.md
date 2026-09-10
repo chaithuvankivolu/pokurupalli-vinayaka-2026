@@ -1,5 +1,10 @@
-# Pokurupalli Vinayaka Chaviti 2026
+# Pokurupalli Vinayaka Chaviti 2026 — v4
 
-Updated English, mobile-friendly website with donation totals and admin dashboard statistics.
+Adds:
+- Separate Program Donors section with program + donor name only; NO amounts.
+- Fixed date/time event schedule and automatic Today's Events.
+- Admin management for Program Donors.
+- Existing General Donations continue to calculate Total Donations.
 
-Deploy as a static site on Vercel. Keep the Supabase publishable key in browser code; never add a service_role/secret key.
+Run `program_donors_and_schedule.sql` in Supabase before deploying this version.
+Then replace the GitHub files; Vercel will redeploy automatically.
