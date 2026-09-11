@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff1d5"/><stop offset="1" stop-color="#f3b24d"/></linearGradient><linearGradient id="fire" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#b51d2b"/><stop offset=".55" stop-color="#f47b20"/><stop offset="1" stop-color="#ffd15a"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<circle cx="400" cy="220" r="145" fill="#fff" opacity=".55"/>
+<path d="M240 315 L560 315 L515 430 L285 430Z" fill="#a75a28" stroke="#6f351d" stroke-width="8"/>
+<path d="M280 315 L520 315 L485 395 L315 395Z" fill="#d28a38"/>
+<path d="M400 340 C330 300 355 245 390 205 C390 250 455 245 445 185 C500 245 505 305 400 340Z" fill="url(#fire)"/>
+<path d="M400 325 C375 295 395 265 410 240 C420 275 445 280 438 305 C430 326 415 336 400 325Z" fill="#fff1a1"/>
+<text x="400" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="44" font-weight="700" fill="#6e1720">Ganesh Homam</text>
+<text x="400" y="132" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#8b654b">Sacred fire ritual</text>
+</svg>

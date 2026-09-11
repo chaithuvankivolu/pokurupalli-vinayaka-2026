@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2cf"/><stop offset="1" stop-color="#f6c66a"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/>
+<circle cx="400" cy="250" r="180" fill="#fff" opacity=".72"/>
+<ellipse cx="400" cy="330" rx="205" ry="55" fill="#d7a43c" opacity=".35"/>
+<path d="M220 285 Q400 210 580 285 L555 350 Q400 410 245 350Z" fill="#fff" stroke="#a76b22" stroke-width="8"/>
+<ellipse cx="400" cy="285" rx="180" ry="65" fill="#fffaf0" stroke="#b67a27" stroke-width="7"/>
+<circle cx="330" cy="280" r="48" fill="#f0b83e"/><circle cx="420" cy="300" r="44" fill="#d88922"/><circle cx="485" cy="270" r="42" fill="#f4d36d"/>
+<path d="M285 260 Q330 215 375 260" fill="none" stroke="#6f9e3b" stroke-width="18" stroke-linecap="round"/>
+<circle cx="540" cy="315" r="18" fill="#8b3f24"/><circle cx="270" cy="320" r="16" fill="#b54b28"/>
+<text x="400" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="42" font-weight="700" fill="#6e1720">Anna Prasadam</text>
+<text x="400" y="145" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#8b654b">Sacred food served with devotion</text>
+</svg>

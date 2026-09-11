@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7e8"/><stop offset="1" stop-color="#efc37b"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<circle cx="400" cy="250" r="175" fill="#fff" opacity=".72"/>
+<ellipse cx="400" cy="360" rx="245" ry="55" fill="#b87827" opacity=".2"/>
+<path d="M185 300 Q400 235 615 300 L585 375 Q400 430 215 375Z" fill="#fff" stroke="#a76b22" stroke-width="8"/>
+<ellipse cx="400" cy="300" rx="215" ry="65" fill="#fffdf7" stroke="#b67a27" stroke-width="7"/>
+<circle cx="330" cy="300" r="46" fill="#f0b83e"/><circle cx="420" cy="315" r="42" fill="#e09a2b"/><circle cx="485" cy="285" r="38" fill="#7ea642"/>
+<path d="M275 275 Q310 230 350 270" fill="none" stroke="#d45d25" stroke-width="16" stroke-linecap="round"/>
+<path d="M530 275 Q570 245 585 290" fill="none" stroke="#6d9b3c" stroke-width="14" stroke-linecap="round"/>
+<path d="M250 205 Q400 165 550 205" fill="none" stroke="#a84b27" stroke-width="10"/>
+<text x="400" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="44" font-weight="700" fill="#6e1720">Anna Danam</text>
+<text x="400" y="130" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#8b654b">Community meal • Food for all</text>
+</svg>
