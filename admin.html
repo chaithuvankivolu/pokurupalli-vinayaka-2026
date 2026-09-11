@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin Dashboard — Pokurupalli Vinayaka Chaviti 2026</title><link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head>
-<body><header class="admin-header"><div class="container admin-top"><div><p class="eyebrow">POKURUPALLI VINAYAKA CHAVITI 2026</p><h1>Admin Dashboard</h1></div><a href="index.html">← View Website</a></div></header>
-<main class="container admin-main">
-<section id="loginPanel" class="panel login"><h2>Admin Login</h2><p class="muted">Sign in to manage the festival website.</p><form id="loginForm"><input id="email" type="email" placeholder="Email" required><input id="password" type="password" placeholder="Password" required><button>Sign In</button><p id="loginMsg" class="status"></p></form></section>
-<section id="dashboard" hidden>
-<div class="admin-top"><div><p class="eyebrow">OVERVIEW</p><h2>Dashboard</h2></div><button id="logoutBtn" class="secondary">Sign Out</button></div>
+<body><header class="topbar"><div class="container topbar-inner"><a class="brand" href="index.html"><div class="brand-mark">ॐ</div><div><strong>Pokurupalli</strong><span>Vinayaka Chaviti Celebrations</span></div></a><a class="upload-btn" href="index.html">← View Website</a></div></header>
+<main class="container admin-main"><section id="loginPanel" class="panel login"><div class="eyebrow">SECURE AREA</div><h2>Admin Login</h2><p class="muted">Sign in to manage events, donors, photos and announcements.</p><form id="loginForm"><input id="email" type="email" placeholder="Email" required><input id="password" type="password" placeholder="Password" required><button>Sign In</button><p id="loginMsg" class="status"></p></form></section>
+<section id="dashboard" hidden><div class="admin-top"><div><div class="eyebrow">POKURUPALLI VINAYAKA CHAVITI 2026</div><h2>Admin Dashboard</h2></div><button id="logoutBtn" class="secondary">Sign Out</button></div>
 <section class="stats admin-stats"><div class="stat"><span>💰</span><small>Total Donations</small><strong id="dashDonations">₹0</strong></div><div class="stat"><span>🙏</span><small>Total Donors</small><strong id="dashDonors">0</strong></div><div class="stat"><span>📅</span><small>Today's Events</small><strong id="dashEvents">0</strong></div><div class="stat"><span>📸</span><small>Pending Photos</small><strong id="dashPending">0</strong></div></section>
-<div class="grid2">
-<div class="panel"><h3>🎉 Add Program Donor</h3><form id="programDonorForm"><input id="programName" placeholder="Program name" required><input id="programDonorName" placeholder="Donor name" required><label class="check"><input id="programAnonymous" type="checkbox"> Display as Anonymous</label><button>Save Program Donor</button></form></div>
-<div class="panel"><h3>📅 Add Event</h3><form id="eventForm"><input id="eventTitle" placeholder="Event name" required><textarea id="eventDesc" placeholder="Description"></textarea><input id="eventDate" type="date" required><div class="row"><input id="startTime" type="time"><input id="endTime" type="time"></div><input id="eventLocation" placeholder="Location"><button>Save Event</button></form></div>
-<div class="panel"><h3>🙏 Add Donor</h3><form id="donorForm"><input id="donorName" placeholder="Donor name" required><input id="donorAmount" type="number" min="0" step="0.01" placeholder="Donation amount"><label class="check"><input id="donorAnonymous" type="checkbox"> Display as Anonymous</label><button>Save Donor</button></form></div>
-</div>
+<div class="grid2"><div class="panel"><h3>📅 Add / Edit Event</h3><form id="eventForm"><input id="eventTitle" placeholder="Event name" required><textarea id="eventDesc" placeholder="Description"></textarea><input id="eventDate" type="date" required><div class="row"><input id="startTime" type="time"><input id="endTime" type="time"></div><input id="eventLocation" placeholder="Location"><button>Save Event</button></form></div>
+<div class="panel"><h3>🙏 Add / Edit General Donor</h3><form id="donorForm"><input id="donorName" placeholder="Donor name" required><input id="donorAmount" type="number" min="0" step="0.01" placeholder="Donation amount"><label class="check"><input id="donorAnonymous" type="checkbox"> Display as Anonymous</label><button>Save Donor</button></form></div></div>
+<div class="panel"><h3>🎉 Add Program Donor</h3><p class="muted">Program donors never display a donation amount.</p><form id="programDonorForm"><input id="programName" placeholder="Program name" required><input id="programDonorName" placeholder="Donor name" required><label class="check"><input id="programAnonymous" type="checkbox"> Display as Anonymous</label><button>Save Program Donor</button></form></div>
 <div class="panel"><h3>📢 Add Announcement</h3><form id="announcementForm"><input id="annTitle" placeholder="Title" required><textarea id="annMessage" placeholder="Announcement message"></textarea><button>Save Announcement</button></form></div>
-<div class="panel"><h3>📢 Existing Announcements</h3><div id="adminAnnouncements"></div></div>
 <div class="panel"><h3>🎉 Program Donors</h3><div id="adminProgramDonors"></div></div>
 <div class="panel"><h3>📸 Pending Photo Approvals</h3><div id="pendingPhotos"></div></div>
-<div class="panel"><h3>📅 Recent Events</h3><div id="adminEvents"></div></div>
-<div class="panel"><h3>🙏 Donors</h3><div id="adminDonors"></div></div>
+<div class="panel"><h3>📅 Events</h3><div id="adminEvents"></div></div>
+<div class="panel"><h3>🙏 General Donors</h3><div id="adminDonors"></div></div>
+<div class="panel"><h3>📢 Existing Announcements</h3><div id="adminAnnouncements"></div></div>
 </section></main><script src="admin.js"></script></body></html>

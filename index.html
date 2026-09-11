@@ -1,31 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🕉️ పోకురుపల్లి వినాయక చవితి 2026</title>
-<meta name="description" content="Pokurupalli Vinayaka Chaviti 2026">
-<link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="description" content="Pokurupalli Vinayaka Chaviti 2026 — events, donations, donors and community photos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-<header class="hero"><div class="container">
-  <div class="om">ॐ</div>
-  <p class="eyebrow">GANESH CHATURTHI 2026</p>
-  <h1>పోకురుపల్లి వినాయక చవితి 2026</h1>
-  <p class="subtitle">Celebrating faith, community & tradition</p>
-  <nav><a href="#today">Today's Events</a><a href="#donations">Donations</a><a href="#donors">Donors</a><a href="#programDonors">Program Donors</a><a href="#schedule">Schedule</a><a href="#gallery">Gallery</a><a href="#upload">Upload Photo</a><a href="admin.html">Admin</a></nav>
-</div></header>
-<main class="container">
-<section id="donations" class="stats">
- <div class="stat"><span>💰</span><small>Total Donations</small><strong id="totalDonations">₹0</strong></div>
- <div class="stat"><span>🙏</span><small>Total Donors</small><strong id="totalDonors">0</strong></div>
- <div class="stat"><span>📅</span><small>Today's Events</small><strong id="eventCount">0</strong></div>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#">
+      <div class="brand-mark">ॐ</div>
+      <div><strong>Pokurupalli</strong><span>Vinayaka Chaviti Celebrations</span></div>
+    </a>
+    <div class="community"><span>📍</span><div><small>Our Community</small><b>Pokurupalli, Andhra Pradesh</b></div></div>
+    <nav class="nav">
+      <a class="active" href="#">Home</a><a href="#about">About</a><a href="#schedule">Events</a><a href="#gallery">Gallery</a><a href="#donations">Donate</a><a href="#announcements">Announcements</a>
+    </nav>
+    <a class="upload-btn" href="#upload">📷 Upload Photo</a>
+    <a class="admin-dot" href="admin.html" aria-label="Admin">●</a>
+  </div>
+</div>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-kicker">॥ Ganapati Bappa Morya ॥</div>
+    <div class="hero-title-telugu">పోకురుపల్లి</div>
+    <h1>Ganesh Chaturthi<br><em>Celebrations 2026</em></h1>
+    <p>Together in devotion, unity and happiness,<br class="desktop"> let's celebrate the blessings of Lord Ganesha.</p>
+    <div class="hero-actions"><a class="primary" href="#donations">♥ Donate Now</a><a class="outline" href="#gallery">▣ View Gallery</a></div>
+  </div>
+  <div class="hero-art">
+    <div class="halo"></div>
+    <div class="ganesh-placeholder">🪔<div class="ganesh-symbol">🐘</div><span>Ganapati Bappa Morya</span></div>
+    <div class="marigold marigold-a">✿ ✿ ✿</div><div class="marigold marigold-b">✿ ✿ ✿</div>
+  </div>
 </section>
-<section id="today" class="section"><div class="section-head"><div><p class="eyebrow">PROGRAMME</p><h2>Today's Events</h2></div></div><div id="todayEvents" class="cards"><p class="muted">Loading...</p></div></section>
-<section id="programDonors" class="section"><div class="section-head"><div><p class="eyebrow">PROGRAM SUPPORT</p><h2>Program Donors</h2></div></div><div id="programDonorsList" class="program-donor-list"><p class="muted">Loading...</p></div></section>
-<section id="schedule" class="section"><div class="section-head"><div><p class="eyebrow">FESTIVAL PROGRAMME</p><h2>Full Event Schedule</h2></div></div><div id="scheduleList" class="schedule-list"><p class="muted">Loading...</p></div></section>
-<section id="donors" class="section"><div class="section-head"><div><p class="eyebrow">WITH GRATITUDE</p><h2>Our Donors</h2></div></div><div id="donorsList" class="donor-list"><p class="muted">Loading...</p></div></section>
-<section id="gallery" class="section"><div class="section-head"><div><p class="eyebrow">MEMORIES</p><h2>Photo Gallery</h2></div></div><div id="galleryGrid" class="gallery"><p class="muted">Loading...</p></div></section>
-<section id="upload" class="section upload-box"><div class="section-head"><div><p class="eyebrow">SHARE THE JOY</p><h2>Upload a Photo</h2></div></div><p>Share your festival photos with the community. Photos appear in the gallery after admin approval.</p>
-<form id="uploadForm"><input id="photoName" placeholder="Your name (optional)" maxlength="80"><input id="photoTitle" placeholder="Photo title (optional)" maxlength="120"><input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" required><button>Upload Photo</button><p id="uploadMsg" class="status"></p></form></section>
-</main><footer><div class="container"><b>🕉️ పోకురుపల్లి వినాయక చవితి 2026</b><p>Celebrating together with devotion and joy.</p></div></footer>
-<script src="app.js"></script></body></html>
+
+<section class="container countdown-wrap">
+  <div class="countdown-card">
+    <div class="countdown-copy"><div class="flower">✿</div><div><b>Festival Countdown</b><span>Ganesh Chaturthi • September 14, 2026</span></div></div>
+    <div class="timer"><div><strong id="days">00</strong><small>Days</small></div><div><strong id="hours">00</strong><small>Hours</small></div><div><strong id="minutes">00</strong><small>Minutes</small></div><div><strong id="seconds">00</strong><small>Seconds</small></div></div>
+  </div>
+  <div class="quick-grid">
+    <a href="#schedule" class="quick"><span>▦</span><b>Events</b><small>View Schedule</small></a>
+    <a href="#gallery" class="quick"><span>▧</span><b>Gallery</b><small>View Photos</small></a>
+    <a href="#donations" class="quick"><span>♡</span><b>Donate</b><small>Support the Cause</small></a>
+    <a href="#announcements" class="quick"><span>⚑</span><b>Announcements</b><small>Latest Updates</small></a>
+  </div>
+</section>
+
+<section id="donations" class="container donation-section">
+  <div class="donation-card">
+    <div class="donation-info"><div class="section-icon">♡</div><div><h2>Support Our Ganesh Chaturthi</h2><p>Your generous contribution helps us organize the celebrations, arrange pooja items, cultural events and community activities.</p></div></div>
+    <div class="donation-progress"><div class="progress-label"><span id="donationProgressText">₹0 collected</span><span>Community Donations</span></div><div class="progress"><i id="progressBar"></i></div></div>
+    <div class="donation-stats"><div><small>Total Donations</small><strong id="totalDonations">₹0</strong></div><div><small>Total Donors</small><strong id="totalDonors">0</strong></div></div>
+    <a class="donate-wide" href="#donations">♥ Donate Now</a>
+    <div class="secure">🔒 Secure Payments &nbsp; • &nbsp; UPI, Cards, Net Banking</div>
+  </div>
+  <div class="quote-card"><span>✿</span><p>Every<br>contribution<br>is a step towards<br>a greater cause.</p><small>— Our Community</small></div>
+</section>
+
+<section id="schedule" class="container section">
+  <div class="section-head"><div><div class="eyebrow">📅 PROGRAMME</div><h2>Upcoming Events</h2></div><a href="#schedule">View Full Schedule →</a></div>
+  <div id="upcomingEvents" class="event-grid"><div class="loading">Loading events...</div></div>
+</section>
+
+<section id="about" class="container section about-strip">
+  <div><div class="eyebrow">TODAY'S PROGRAMME</div><h2>Today's Events</h2><div id="todayEvents" class="today-list"><p class="muted">Loading...</p></div></div>
+  <div class="vision"><div class="eyebrow">OUR VISION</div><h2>Celebrating Together</h2><p>To bring our community together in devotion, service and celebration, while spreading the blessings of Lord Ganesha to everyone.</p><strong>Ganpati Bappa Morya!</strong></div>
+</section>
+
+<section id="gallery" class="container section">
+  <div class="section-head"><div><div class="eyebrow">📸 MEMORIES</div><h2>Photo Gallery</h2></div><a href="#upload">Upload Photo →</a></div>
+  <div id="galleryGrid" class="gallery-grid"><div class="loading">Loading photos...</div><a class="upload-tile" href="#upload"><span>📷</span><b>Share your Ganesh Chaturthi moments</b><small>Upload Photo</small></a></div>
+</section>
+
+<section id="programDonors" class="container section">
+  <div class="section-head"><div><div class="eyebrow">🙏 WITH GRATITUDE</div><h2>Program Donors</h2></div></div>
+  <div id="programDonorsList" class="program-grid"><p class="muted">Loading...</p></div>
+</section>
+
+<section id="announcements" class="container section lower-grid">
+  <div class="announcement-card"><div class="section-head"><div><div class="eyebrow">📢 UPDATES</div><h2>Latest Announcements</h2></div></div><div id="announcementList"><p class="muted">Loading...</p></div></div>
+  <div class="about-card"><div class="section-head"><div><div class="eyebrow">🪷 ABOUT</div><h2>Our Celebration</h2></div></div><p>Join the people of Pokurupalli as we celebrate Lord Ganesha with devotion, cultural programmes, service and community spirit.</p><div class="mini-om">ॐ</div></div>
+</section>
+
+<section id="upload" class="container section">
+  <div class="upload-panel"><div><div class="eyebrow">SHARE THE JOY</div><h2>Upload Your Festival Photo</h2><p>Share your memories with the community. Photos will appear after admin approval.</p></div>
+  <form id="uploadForm"><input id="photoName" placeholder="Your name (optional)" maxlength="80"><input id="photoTitle" placeholder="Photo title (optional)" maxlength="120"><input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" required><button>📷 Upload Photo</button><p id="uploadMsg" class="status"></p></form></div>
+</section>
+</main>
+
+<footer><div class="container footer-grid"><div><div class="brand footer-brand"><div class="brand-mark">ॐ</div><div><strong>పోకురుపల్లి వినాయక చవితి 2026</strong><span>Ganesh Chaturthi Celebrations</span></div></div><p>Celebrating together with devotion and joy.</p></div><div>📍 Pokurupalli, Andhra Pradesh</div><div>Made with ♥ for our community</div></div></footer>
+<script src="app.js"></script>
+</body></html>

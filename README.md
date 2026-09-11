@@ -1,10 +1,20 @@
-# Pokurupalli Vinayaka Chaviti 2026 — v4
+# Pokurupalli Vinayaka Chaviti 2026 — UI v5
 
-Adds:
-- Separate Program Donors section with program + donor name only; NO amounts.
-- Fixed date/time event schedule and automatic Today's Events.
-- Admin management for Program Donors.
-- Existing General Donations continue to calculate Total Donations.
+A mobile-first festival UI inspired by the supplied reference screenshot:
+- Maroon/gold festival header
+- Split Ganesh hero
+- Countdown
+- Donation progress and totals
+- Quick navigation cards
+- Upcoming fixed schedule
+- Today's events
+- Photo gallery
+- Program donors (no amounts)
+- Announcements
+- Community vision/about
+- Public photo upload
+- Admin dashboard
 
-Run `program_donors_and_schedule.sql` in Supabase before deploying this version.
-Then replace the GitHub files; Vercel will redeploy automatically.
+Backend remains Supabase + Vercel.
+
+Run the already-created security/table SQL only if your database does not have those objects. Do not put a service_role/secret key into the website.
