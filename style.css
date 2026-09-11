@@ -49,3 +49,8 @@
   .photo-picker-text b{font-size:11px}
   .photo-picker-text small{font-size:9px}
 }
+
+
+/* V19 gallery reliability */
+.gallery-status{grid-column:1/-1;text-align:center;padding:18px 10px;margin:0;}
+.gallery-grid figure.photo-load-error img{display:block;min-height:160px;object-fit:contain;background:#f7f1ea;}

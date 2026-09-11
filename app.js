@@ -31,6 +31,7 @@ async function loadHome(){
   const firstError=results.find(r=>r.error)?.error;
   if(firstError) console.error("Supabase load error:",firstError);
   const schedule=ev.data||[],donors=do_.data||[],photos=ph.data||[],programDonors=pd.data||[],anns=ann.data||[];
+  if(ph.error) console.error("Approved photos query failed:",ph.error);
   const total=donors.reduce((s,x)=>s+(Number(x.amount)||0),0);
   const set=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value};
   set("totalDonations",money(total));set("totalDonors",donors.length);set("donationProgressText",money(total)+" collected");
@@ -42,7 +43,12 @@ async function loadHome(){
   const upcoming=document.getElementById("upcomingEvents");
   if(upcoming) upcoming.innerHTML=future.length?groupedSchedule(future):'<p class="muted">No upcoming events scheduled.</p>';
   const pdEl=document.getElementById("programDonorsList");if(pdEl)pdEl.innerHTML=programDonors.length?programDonors.map(x=>`<div class="program-card"><span>${esc(x.program_name)}</span><b>${x.is_anonymous?"Anonymous Donor":esc(x.donor_name)}</b></div>`).join(""):'<p class="muted">Program donors will appear here.</p>';
-  const gallery=document.getElementById("galleryGrid");if(gallery&&photos.length)gallery.innerHTML=photos.map(x=>`<figure><img loading="lazy" src="${esc(x.image_url)}" alt="${esc(x.title||"Festival photo")}"><figcaption>${esc(x.title||"Festival photo")}</figcaption></figure>`).join("")+`<a class="upload-tile" href="#upload"><span>📷</span><b>Share your moments</b><small>Upload Photo</small></a>`;
+  const gallery=document.getElementById("galleryGrid");
+  if(gallery){
+    const galleryItems=photos.map(x=>`<figure><img loading="lazy" src="${esc(x.image_url)}" alt="${esc(x.title||"Festival photo")}" onerror="this.closest('figure').classList.add('photo-load-error');this.alt='Photo unavailable';"><figcaption>${esc(x.title||"Festival photo")}</figcaption></figure>`).join("");
+    const message=ph.error?'<p class="muted gallery-status">Photos are temporarily unavailable. Please try again shortly.</p>':(!photos.length?'<p class="muted gallery-status">No approved photos yet.</p>':'');
+    gallery.innerHTML=galleryItems+message+`<a class="upload-tile" href="#upload"><span>📷</span><b>Share your moments</b><small>Upload Photo</small></a>`;
+  }
   const an=document.getElementById("announcementList");if(an)an.innerHTML=anns.length?anns.map(x=>`<div class="announcement-row"><span>•</span><div><b>${esc(x.title)}</b><p>${esc(x.message||"")}</p></div><span>→</span></div>`).join(""):'<p class="muted">No announcements yet.</p>';
  }catch(err){
   console.error("Website data loading failed:",err);
