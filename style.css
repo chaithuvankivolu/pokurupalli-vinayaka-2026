@@ -8,3 +8,44 @@
 @media(max-width:480px){.schedule-day{padding:12px}.schedule-day-head{align-items:flex-start;flex-direction:column}.schedule-day-head h3{font-size:17px}.schedule-day .event-grid{grid-template-columns:1fr}}
 
 .upi-payment-box{margin-top:16px;border:1px solid #ead8cc;border-radius:13px;background:#fff;display:grid;grid-template-columns:1.35fr .75fr;gap:18px;padding:18px;align-items:center}.upi-copy{min-width:0}.upi-label{display:inline-block;font-size:9px;letter-spacing:1.4px;font-weight:900;color:#a04427;background:#fff1e6;padding:5px 8px;border-radius:12px}.upi-copy h3{margin:7px 0 2px;color:#671722;font-size:17px}.upi-copy p{margin:0 0 10px;font-size:11px;color:#786762}.upi-id-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}.upi-id-row span{font-weight:800;font-size:13px;color:#4a2420;background:#faf3ed;border:1px solid #ead9ce;padding:8px 10px;border-radius:8px;flex:1}.upi-id-row button{border:1px solid #cda58f;background:#fff;border-radius:8px;padding:8px 11px;color:#7f2029;font-weight:800;cursor:pointer}.amount-choices{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.amount-choice,.amount-choices input{height:38px;border:1px solid #e2cec2;border-radius:8px;background:#fffaf7;color:#5b2523;font-weight:800;font:inherit;font-size:12px}.amount-choice{cursor:pointer}.amount-choice.selected{background:#8e1e2b;color:#fff;border-color:#8e1e2b}.amount-choices input{padding:0 8px;min-width:0}.upi-donate-btn{margin-top:10px}.upi-note{display:block;margin-top:7px;color:#89756d;font-size:9px}.upi-qr-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid #eadbd2;padding-left:18px}.upi-qr-wrap img{width:min(190px,100%);aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid #e2d5ce;background:#111}.upi-qr-wrap strong{margin-top:7px;font-size:12px;color:#5a2421}.upi-qr-wrap span{font-size:9px;color:#84716b;text-align:center}@media(max-width:760px){.upi-payment-box{grid-template-columns:1fr}.upi-qr-wrap{border-left:0;border-top:1px solid #eadbd2;padding-left:0;padding-top:15px}.upi-qr-wrap img{width:210px}.amount-choices{grid-template-columns:repeat(3,1fr)}.amount-choices input{grid-column:1/-1}}
+
+/* Mobile-friendly public photo upload */
+.upload-form{min-width:0}
+.photo-file-input{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.photo-picker{min-height:72px;border:2px dashed #d8b9a7;border-radius:12px;background:#fff9f4;display:flex;align-items:center;gap:12px;padding:11px 13px;cursor:pointer;transition:.2s ease}
+.photo-picker:hover,.photo-picker:focus-within{border-color:#b51d2b;background:#fff5ee}
+.photo-picker-icon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f8e8dc;font-size:20px}
+.photo-picker-text{min-width:0;flex:1}
+.photo-picker-text b,.photo-picker-text small{display:block}
+.photo-picker-text b{font-size:12px;color:#6f1d25}
+.photo-picker-text small{font-size:10px;color:#88736b;margin-top:2px}
+.photo-picker-action{flex:0 0 auto;background:#fff;border:1px solid #d8c2b6;color:#7d2029;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:800}
+.photo-preview{display:flex;align-items:center;gap:10px;border:1px solid #eadbd2;background:#fff;border-radius:10px;padding:8px;min-width:0}
+.photo-preview img{width:58px;height:48px;object-fit:cover;border-radius:7px;background:#f1e5dc;flex:0 0 58px}
+.photo-preview b,.photo-preview small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.photo-preview b{font-size:11px;color:#5d2a26;max-width:100%}
+.photo-preview small{font-size:9px;color:#8b756d;margin-top:2px}
+
+@media(max-width:760px){
+  #upload{scroll-margin-top:12px}
+  .upload-panel{padding:16px;gap:16px}
+  .upload-panel>div:first-child{min-width:0}
+  .upload-panel h2{font-size:21px;line-height:1.2}
+  .upload-panel p{font-size:11px;line-height:1.5;margin-bottom:0}
+  .upload-form{width:100%;max-width:100%;gap:10px}
+  .upload-form input:not(.photo-file-input){width:100%;min-width:0;height:44px;font-size:14px}
+  .photo-picker{width:100%;min-width:0;min-height:76px}
+  .photo-picker-text{overflow:hidden}
+  .photo-picker-text b,.photo-picker-text small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .photo-picker-action{padding:8px 11px}
+  .upload-panel button{width:100%;min-height:46px;font-size:14px}
+  .status{margin:0;line-height:1.4}
+}
+@media(max-width:380px){
+  .upload-panel{padding:13px}
+  .photo-picker{gap:8px;padding:9px}
+  .photo-picker-icon{width:36px;height:36px;flex-basis:36px;font-size:17px}
+  .photo-picker-action{padding:7px 8px;font-size:10px}
+  .photo-picker-text b{font-size:11px}
+  .photo-picker-text small{font-size:9px}
+}

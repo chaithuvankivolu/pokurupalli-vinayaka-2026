@@ -50,6 +50,17 @@ async function loadHome(){
   const upcoming=document.getElementById("upcomingEvents");if(upcoming)upcoming.innerHTML='<p class="muted">Unable to load the event schedule right now.</p>';
  }
 }
+const photoFileInput=document.getElementById("photoFile");
+if(photoFileInput) photoFileInput.addEventListener("change",()=>{
+  const file=photoFileInput.files[0];
+  const preview=document.getElementById("photoPreview");
+  const img=document.getElementById("photoPreviewImg");
+  const name=document.getElementById("photoFileName");
+  if(!file){ if(preview) preview.hidden=true; return; }
+  if(name) name.textContent=file.name;
+  if(preview) preview.hidden=false;
+  if(img){ const reader=new FileReader(); reader.onload=()=>img.src=reader.result; reader.readAsDataURL(file); }
+});
 const uploadForm=document.getElementById("uploadForm");
 if(uploadForm)uploadForm.addEventListener("submit",async e=>{e.preventDefault();const msg=document.getElementById("uploadMsg"),file=document.getElementById("photoFile").files[0];if(!file)return;if(file.size>8*1024*1024){msg.textContent="Please keep the photo below 8MB.";return}msg.textContent="Uploading…";const ext=(file.name.split(".").pop()||"jpg").toLowerCase(),path=`public/${crypto.randomUUID()}.${ext}`;const up=await db.storage.from("ganesh-photos").upload(path,file,{contentType:file.type});if(up.error){msg.textContent="Upload failed: "+up.error.message;return}const url=db.storage.from("ganesh-photos").getPublicUrl(path).data.publicUrl;const ins=await db.from("photos").insert({image_url:url,title:document.getElementById("photoTitle").value.trim(),uploaded_by:document.getElementById("photoName").value.trim(),status:"pending"});if(ins.error){msg.textContent="Could not submit photo: "+ins.error.message;return}msg.textContent="Thank you! Your photo was submitted for admin approval.";e.target.reset()});
 // UPI donation controls

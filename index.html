@@ -113,7 +113,22 @@
 
 <section id="upload" class="container section">
   <div class="upload-panel"><div><div class="eyebrow">SHARE THE JOY</div><h2>Upload Your Festival Photo</h2><p>Share your memories with the community. Photos will appear after admin approval.</p></div>
-  <form id="uploadForm"><input id="photoName" placeholder="Your name (optional)" maxlength="80"><input id="photoTitle" placeholder="Photo title (optional)" maxlength="120"><input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" required><button>📷 Upload Photo</button><p id="uploadMsg" class="status"></p></form></div>
+  <form id="uploadForm" class="upload-form">
+  <input id="photoName" placeholder="Your name (optional)" maxlength="80">
+  <input id="photoTitle" placeholder="Photo title (optional)" maxlength="120">
+  <label class="photo-picker" for="photoFile">
+    <span class="photo-picker-icon">📷</span>
+    <span class="photo-picker-text"><b>Choose a photo</b><small>JPG, PNG or WebP • Max 8MB</small></span>
+    <span class="photo-picker-action">Browse</span>
+  </label>
+  <input id="photoFile" class="photo-file-input" type="file" accept="image/jpeg,image/png,image/webp" required>
+  <div id="photoPreview" class="photo-preview" hidden>
+    <img id="photoPreviewImg" alt="Selected photo preview">
+    <div><b id="photoFileName">Photo selected</b><small>Ready to upload</small></div>
+  </div>
+  <button type="submit">📷 Upload Photo</button>
+  <p id="uploadMsg" class="status"></p>
+</form></div>
 </section>
 </main>
 
