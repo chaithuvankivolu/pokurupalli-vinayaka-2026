@@ -58,11 +58,30 @@
 
 <section id="donations" class="container donation-section">
   <div class="donation-card">
-    <div class="donation-info"><div class="section-icon">♡</div><div><h2>Support Our Ganesh Chaturthi</h2><p>Your generous contribution helps us organize the celebrations, arrange pooja items, cultural events and community activities.</p></div></div>
+    <div class="donation-info"><div class="section-icon">♡</div><div><h2>Support Our Ganesh Chaturthi</h2><p>Your contribution helps us organize Pooja, Anna Prasadam, Homam, cultural programmes and community activities.</p></div></div>
     <div class="donation-progress"><div class="progress-label"><span id="donationProgressText">₹0 collected</span><span>Community Donations</span></div><div class="progress"><i id="progressBar"></i></div></div>
     <div class="donation-stats"><div><small>Total Donations</small><strong id="totalDonations">₹0</strong></div><div><small>Total Donors</small><strong id="totalDonors">0</strong></div></div>
-    <a class="donate-wide" href="#donations">♥ Donate Now</a>
-    <div class="secure">🔒 Secure Payments &nbsp; • &nbsp; UPI, Cards, Net Banking</div>
+    <div class="upi-payment-box">
+      <div class="upi-copy">
+        <span class="upi-label">UPI PAYMENT</span>
+        <h3>Donate using any UPI app</h3>
+        <p>Scan the QR code or tap Donate Now on your mobile.</p>
+        <div class="upi-id-row"><span id="upiId">8985120240@ybl</span><button type="button" id="copyUpi">Copy</button></div>
+        <div class="amount-choices" aria-label="Donation amount">
+          <button type="button" class="amount-choice" data-amount="101">₹101</button>
+          <button type="button" class="amount-choice" data-amount="501">₹501</button>
+          <button type="button" class="amount-choice" data-amount="1001">₹1,001</button>
+          <input id="customDonationAmount" type="number" min="1" inputmode="numeric" placeholder="Custom ₹" aria-label="Custom donation amount">
+        </div>
+        <a class="donate-wide upi-donate-btn" id="upiDonateBtn" href="upi://pay?pa=8985120240%40ybl&pn=Pokurupalli%20Vinayaka%20Chaviti&cu=INR">♥ Donate Now</a>
+        <small class="upi-note">After payment, please keep your UPI transaction/reference ID for confirmation.</small>
+      </div>
+      <div class="upi-qr-wrap">
+        <img src="upi-qr.jpg" alt="UPI QR code for donations">
+        <strong>Scan &amp; Pay</strong>
+        <span>PhonePe / GPay / Paytm / BHIM</span>
+      </div>
+    </div>
   </div>
   <div class="quote-card"><span>✿</span><p>Every<br>contribution<br>is a step towards<br>a greater cause.</p><small>— Our Community</small></div>
 </section>
