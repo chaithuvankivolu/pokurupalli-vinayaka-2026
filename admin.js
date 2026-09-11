@@ -7,14 +7,25 @@ const esc = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;
 const money = n => '₹' + Number(n || 0).toLocaleString('en-IN', {maximumFractionDigits:2});
 
 async function isAdmin(){
-  const {data:{user}} = await db.auth.getUser();
-  if(!user) return false;
-  const {data,error} = await db.from('admin_users').select('user_id').eq('user_id',user.id).maybeSingle();
-  return !error && !!data;
+  const {data:{user}, error:userError} = await db.auth.getUser();
+  if(userError || !user) return {ok:false, message:'Please sign in again.'};
+
+  // Use the SECURITY DEFINER RPC instead of querying admin_users directly.
+  // This avoids admin_users RLS blocking an otherwise valid admin login.
+  const {data, error} = await db.rpc('is_admin');
+  if(error) return {ok:false, message:'Admin verification failed: ' + error.message};
+  return {ok:Boolean(data), message:Boolean(data) ? '' : 'This account is not an admin.'};
+}
+
+function showLogin(message=''){
+  $('loginPanel').hidden = false;
+  $('dashboard').hidden = true;
+  $('loginMsg').textContent = message;
 }
 
 async function loadDashboard(){
-  if(!(await isAdmin())) { await db.auth.signOut(); showLogin('This account is not an admin.'); return; }
+  const admin = await isAdmin();
+  if(!admin.ok) { await db.auth.signOut(); showLogin(admin.message); return; }
   $('loginPanel').hidden = true; $('dashboard').hidden = false;
   await Promise.all([loadStats(),loadPending(),loadEvents(),loadDonors(),loadProgramDonors(),loadAnnouncements()]);
 }
@@ -64,7 +75,16 @@ async function loadAnnouncements(){
 }
 window.deleteRow=async(table,id,reload)=>{if(!confirm('Delete this item?'))return;const {error}=await db.from(table).delete().eq('id',id);if(error)alert(error.message);else{await reload();await loadStats();}};
 
-$('loginForm').addEventListener('submit',async e=>{e.preventDefault();$('loginMsg').textContent='Signing in…';const {error}=await db.auth.signInWithPassword({email:$('email').value,password:$('password').value});if(error){$('loginMsg').textContent=error.message;return}await loadDashboard();});
+$('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  $('loginMsg').textContent='Signing in…';
+  const email=$('email').value.trim();
+  const password=$('password').value;
+  const {data,error}=await db.auth.signInWithPassword({email,password});
+  if(error){$('loginMsg').textContent=error.message;return;}
+  if(!data?.session){$('loginMsg').textContent='Login succeeded, but no session was created.';return;}
+  await loadDashboard();
+});
 $('logoutBtn').addEventListener('click',async()=>{await db.auth.signOut();location.reload();});
 $('eventForm').addEventListener('submit',async e=>{e.preventDefault();const {error}=await db.from('events').insert({title:$('eventTitle').value,description:$('eventDesc').value,event_date:$('eventDate').value,start_time:$('startTime').value||null,end_time:$('endTime').value||null,location:$('eventLocation').value});if(error)alert(error.message);else{e.target.reset();await loadEvents();await loadStats();}});
 $('donorForm').addEventListener('submit',async e=>{e.preventDefault();const {error}=await db.from('donors').insert({name:$('donorName').value,amount:Number($('donorAmount').value||0),is_anonymous:$('donorAnonymous').checked});if(error)alert(error.message);else{e.target.reset();await loadDonors();await loadStats();}});

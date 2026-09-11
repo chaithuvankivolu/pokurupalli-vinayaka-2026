@@ -1,20 +1,5 @@
-# Pokurupalli Vinayaka Chaviti 2026 — UI v5
+# Pokurupalli Vinayaka Chaviti 2026 — V10
 
-A mobile-first festival UI inspired by the supplied reference screenshot:
-- Maroon/gold festival header
-- Split Ganesh hero
-- Countdown
-- Donation progress and totals
-- Quick navigation cards
-- Upcoming fixed schedule
-- Today's events
-- Photo gallery
-- Program donors (no amounts)
-- Announcements
-- Community vision/about
-- Public photo upload
-- Admin dashboard
+V10 fixes the admin login verification flow. The admin page now uses the secure `public.is_admin()` RPC instead of directly selecting from `admin_users`, so RLS on `admin_users` cannot incorrectly log out a valid admin.
 
-Backend remains Supabase + Vercel.
-
-Run the already-created security/table SQL only if your database does not have those objects. Do not put a service_role/secret key into the website.
+Run `fix_admin_login.sql` once in Supabase SQL Editor, then deploy these files to Vercel.
