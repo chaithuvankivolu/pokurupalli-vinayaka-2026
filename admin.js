@@ -27,7 +27,7 @@ async function loadDashboard(){
   const admin = await isAdmin();
   if(!admin.ok) { await db.auth.signOut(); showLogin(admin.message); return; }
   $('loginPanel').hidden = true; $('dashboard').hidden = false;
-  await Promise.all([loadStats(),loadPending(),loadEvents(),loadDonors(),loadProgramDonors(),loadAnnouncements()]);
+  await Promise.all([loadStats(),loadPending(),loadAllPhotos(),loadEvents(),loadDonors(),loadProgramDonors(),loadAnnouncements()]);
 }
 
 async function loadStats(){
@@ -50,8 +50,31 @@ async function loadPending(){
   if(!data?.length){box.innerHTML='<p class="muted">No pending photos.</p>';return;}
   box.innerHTML=data.map(p=>`<div class="admin-item photo-review"><img src="${esc(p.image_url)}" alt=""><div><strong>${esc(p.title||'Festival photo')}</strong><small>By ${esc(p.uploaded_by||'Anonymous')} · ${new Date(p.created_at).toLocaleString('en-IN')}</small><div class="row"><button onclick="approvePhoto('${p.id}')">Approve</button><button class="secondary" onclick="rejectPhoto('${p.id}')">Reject</button></div></div></div>`).join('');
 }
-window.approvePhoto=async(id)=>{const {error}=await db.from('photos').update({status:'approved'}).eq('id',id); if(error) alert(error.message); else {await loadPending();await loadStats();}};
-window.rejectPhoto=async(id)=>{const {error}=await db.from('photos').update({status:'rejected'}).eq('id',id); if(error) alert(error.message); else {await loadPending();await loadStats();}};
+window.approvePhoto=async(id)=>{const {error}=await db.from('photos').update({status:'approved'}).eq('id',id); if(error) alert(error.message); else {await loadPending();await loadAllPhotos();await loadStats();}};
+window.rejectPhoto=async(id)=>{const {error}=await db.from('photos').update({status:'rejected'}).eq('id',id); if(error) alert(error.message); else {await loadPending();await loadAllPhotos();await loadStats();}};
+
+async function loadAllPhotos(){
+  const box=$('allPhotos');
+  const {data,error}=await db.from('photos').select('*').order('created_at',{ascending:false});
+  if(error){box.innerHTML='<p class="status">Could not load photos: '+esc(error.message)+'</p>';return;}
+  box.innerHTML=(data||[]).map(p=>`<div class="admin-item photo-review"><img src="${esc(p.image_url)}" alt=""><div><strong>${esc(p.title||'Festival photo')}</strong><small>By ${esc(p.uploaded_by||'Anonymous')} · Status: ${esc(p.status||'unknown')}</small><div class="row"><button class="secondary" onclick="deletePhoto('${p.id}','${esc(p.image_url)}')">Delete Photo</button></div></div></div>`).join('')||'<p class="muted">No photos uploaded.</p>';
+}
+
+window.deletePhoto=async(id,imageUrl)=>{
+  if(!confirm('Permanently delete this photo?')) return;
+  try{
+    const marker='/storage/v1/object/public/ganesh-photos/';
+    const pos=imageUrl.indexOf(marker);
+    if(pos>=0){
+      const objectPath=decodeURIComponent(imageUrl.slice(pos+marker.length).split('?')[0]);
+      const {error:storageError}=await db.storage.from('ganesh-photos').remove([objectPath]);
+      if(storageError) throw storageError;
+    }
+    const {error}=await db.from('photos').delete().eq('id',id);
+    if(error) throw error;
+    await loadPending(); await loadAllPhotos(); await loadStats();
+  }catch(err){ alert('Could not delete photo: '+err.message); }
+};
 
 async function loadEvents(){
   const {data,error}=await db.from('events').select('*').order('event_date',{ascending:true}).order('start_time',{ascending:true});

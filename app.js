@@ -50,45 +50,25 @@ async function loadHome(){
   const upcoming=document.getElementById("upcomingEvents");if(upcoming)upcoming.innerHTML='<p class="muted">Unable to load the event schedule right now.</p>';
  }
 }
+let photoPreviewUrl=null;
 const photoFileInput=document.getElementById("photoFile");
 if(photoFileInput) photoFileInput.addEventListener("change",()=>{
-  const file=photoFileInput.files[0];
+  const file=photoFileInput.files && photoFileInput.files[0];
   const preview=document.getElementById("photoPreview");
   const img=document.getElementById("photoPreviewImg");
   const name=document.getElementById("photoFileName");
-  if(!file){ if(preview) preview.hidden=true; return; }
+  if(photoPreviewUrl){ URL.revokeObjectURL(photoPreviewUrl); photoPreviewUrl=null; }
+  if(!file){ if(preview) preview.hidden=true; if(img) img.removeAttribute("src"); return; }
   if(name) name.textContent=file.name;
+  photoPreviewUrl=URL.createObjectURL(file);
+  if(img){ img.style.display="block"; img.src=photoPreviewUrl; }
   if(preview) preview.hidden=false;
-  if(img){ const reader=new FileReader(); reader.onload=()=>img.src=reader.result; reader.readAsDataURL(file); }
 });
 const uploadForm=document.getElementById("uploadForm");
 if(uploadForm)uploadForm.addEventListener("submit",async e=>{e.preventDefault();const msg=document.getElementById("uploadMsg"),file=document.getElementById("photoFile").files[0];if(!file)return;if(file.size>8*1024*1024){msg.textContent="Please keep the photo below 8MB.";return}msg.textContent="Uploading…";const ext=(file.name.split(".").pop()||"jpg").toLowerCase(),path=`public/${crypto.randomUUID()}.${ext}`;const up=await db.storage.from("ganesh-photos").upload(path,file,{contentType:file.type});if(up.error){msg.textContent="Upload failed: "+up.error.message;return}const url=db.storage.from("ganesh-photos").getPublicUrl(path).data.publicUrl;const ins=await db.from("photos").insert({image_url:url,title:document.getElementById("photoTitle").value.trim(),uploaded_by:document.getElementById("photoName").value.trim(),status:"pending"});if(ins.error){msg.textContent="Could not submit photo: "+ins.error.message;return}msg.textContent="Thank you! Your photo was submitted for admin approval.";e.target.reset()});
-// UPI donation controls
-const upiIdValue="8985120240@ybl";
-const upiPayeeName="Pokurupalli Vinayaka Chaviti";
-function updateUpiLink(amount){
-  const btn=document.getElementById("upiDonateBtn");
-  if(!btn)return;
-  let url=`upi://pay?pa=${encodeURIComponent(upiIdValue)}&pn=${encodeURIComponent(upiPayeeName)}&cu=INR`;
-  if(amount && Number(amount)>0) url+=`&am=${encodeURIComponent(Number(amount).toFixed(2))}`;
-  btn.href=url;
-}
-document.querySelectorAll(".amount-choice").forEach(btn=>btn.addEventListener("click",()=>{
-  const input=document.getElementById("customDonationAmount");
-  if(input) input.value=btn.dataset.amount;
-  document.querySelectorAll(".amount-choice").forEach(x=>x.classList.remove("selected"));
-  btn.classList.add("selected");
-  updateUpiLink(btn.dataset.amount);
-}));
-const customAmount=document.getElementById("customDonationAmount");
-if(customAmount) customAmount.addEventListener("input",()=>{
-  document.querySelectorAll(".amount-choice").forEach(x=>x.classList.remove("selected"));
-  updateUpiLink(customAmount.value);
+// Donation mobile-number copy control
+const copyMobile=document.getElementById("copyMobile");
+if(copyMobile) copyMobile.addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText("8985120240");copyMobile.textContent="Copied!";setTimeout(()=>copyMobile.textContent="Copy",1500)}
+  catch{copyMobile.textContent="Select & copy"}
 });
-const copyUpi=document.getElementById("copyUpi");
-if(copyUpi) copyUpi.addEventListener("click",async()=>{
-  try{await navigator.clipboard.writeText(upiIdValue);copyUpi.textContent="Copied!";setTimeout(()=>copyUpi.textContent="Copy",1500)}
-  catch{copyUpi.textContent="Select & copy"}
-});
-
-loadHome();

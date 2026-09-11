@@ -63,21 +63,14 @@
     <div class="donation-stats"><div><small>Total Donations</small><strong id="totalDonations">₹0</strong></div><div><small>Total Donors</small><strong id="totalDonors">0</strong></div></div>
     <div class="upi-payment-box">
       <div class="upi-copy">
-        <span class="upi-label">UPI PAYMENT</span>
+        <span class="upi-label">DONATION PAYMENT</span>
         <h3>Donate using any UPI app</h3>
-        <p>Scan the QR code or tap Donate Now on your mobile.</p>
-        <div class="upi-id-row"><span id="upiId">8985120240@ybl</span><button type="button" id="copyUpi">Copy</button></div>
-        <div class="amount-choices" aria-label="Donation amount">
-          <button type="button" class="amount-choice" data-amount="101">₹101</button>
-          <button type="button" class="amount-choice" data-amount="501">₹501</button>
-          <button type="button" class="amount-choice" data-amount="1001">₹1,001</button>
-          <input id="customDonationAmount" type="number" min="1" inputmode="numeric" placeholder="Custom ₹" aria-label="Custom donation amount">
-        </div>
-        <a class="donate-wide upi-donate-btn" id="upiDonateBtn" href="upi://pay?pa=8985120240%40ybl&pn=Pokurupalli%20Vinayaka%20Chaviti&cu=INR">♥ Donate Now</a>
-        <small class="upi-note">After payment, please keep your UPI transaction/reference ID for confirmation.</small>
+        <p>Scan the QR code with PhonePe, GPay, Paytm or BHIM. For reference, use the mobile number below.</p>
+        <div class="upi-id-row"><span id="donationMobile">8985120240</span><button type="button" id="copyMobile">Copy</button></div>
+        <small class="upi-note">Mobile Number: 8985120240. After payment, please keep your transaction/reference ID for confirmation.</small>
       </div>
       <div class="upi-qr-wrap">
-        <img src="upi-qr.jpg" alt="UPI QR code for donations">
+        <img src="upi-qr.jpg" alt="QR code for donations">
         <strong>Scan &amp; Pay</strong>
         <span>PhonePe / GPay / Paytm / BHIM</span>
       </div>
